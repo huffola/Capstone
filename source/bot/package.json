@@ -1,0 +1,14 @@
+{
+  "name": "richardo-botts",
+  "version": "1.0.0",
+  "description": "*************Capstone project**************",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "It'sYaBoi",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^13.1.0"
+  }
+}
