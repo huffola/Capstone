@@ -1,21 +1,48 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
+const { waitForDebugger } = require('inspector');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('clear')
-        .setDescription('Clears a number of messages. If no number presented, will delete 100 messages.'),
-    async execute(client, message, args, Discord) {
-        if(!args[0]){
+        .setDescription('Clears a number of messages. If no number presented, will delete 100 messages.')
+        .addIntegerOption(option => option.setName('int').setDescription('Enter an integer')),
+    async execute(client, message, args, Discord, interaction) {
+
+        const wait = require('../helpercommands/timer')
+
+        try{
+             args = interaction.options.get('int').value;
+        }catch{}
+        if(!args){
+            try{
+                await interaction.channel.messages.fetch({limit: 100}).then(messages => {
+                    interaction.channel.bulkDelete(messages);
+                }) 
+                await interaction.reply("Messages have been cleared");
+                await wait.execute(4000);
+                await interaction.deleteReply();
+                return;
+            } catch {
             await message.channel.messages.fetch({limit: 100}).then(messages => {
                 message.channel.bulkDelete(messages)
             })
+            return;
         }
-        if(isNaN(args[0])) return message.reply("Please enter a real number");
-        if(args[0] > 100) return message.reply("You cannot delete more than 100 messages");
-        if(args[0] < 1) return message.reply("You must delete at least one message");
+        }
+        if(args > 100) return message.reply("You cannot delete more than 100 messages");
         
-        await message.channel.messages.fetch({limit: args[0]}).then(messages =>{
+        try{
+            await interaction.channel.messages.fetch({limit: args}).then(messages => {
+                interaction.channel.bulkDelete(messages);
+            })
+            await interaction.reply("Messages have been cleared");
+            await wait.execute(4000);
+            await interaction.deleteReply();
+            return;
+        } catch {
+        await message.channel.messages.fetch({limit: args}).then(messages =>{
             message.channel.bulkDelete(messages);
-        })
+        })}
+        return;
     },
 };
