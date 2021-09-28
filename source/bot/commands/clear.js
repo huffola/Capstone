@@ -9,6 +9,11 @@ module.exports = {
     async execute(client, message, args, Discord, interaction) {
 
         const wait = require('../helpercommands/timer')
+        if(interaction){
+            if(!(interaction.member.guild.members.cache.get(interaction.user.id).permissions.has("MANAGE_CHANNELS"))){ 
+                return;
+            }
+        }
 
         try{
              args = interaction.options.get('int').value;

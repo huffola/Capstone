@@ -12,39 +12,52 @@ module.exports = {
 
         const wait = require('../helpercommands/timer')
 
-        try{
-             args = [interaction.options.get('amount').value, interaction.options.get('size').value, interaction.options.get('modifiers').value]
-        }catch{}
-        if(args === undefined) args = "";
-        if(args.length === 0) {
-            try{
-            return interaction.reply(`Default 1D20 roll: ${Math.floor(Math.random()*20+1)}`)
+        try {
+            args = [interaction.options.get('amount').value, interaction.options.get('size').value, interaction.options.get('modifiers').value]
+        } catch { }
+        if (args === undefined) args = "";
+        if (args.length === 0) {
+            try {
+                return interaction.reply(`Default 1D20 roll: ${Math.floor(Math.random() * 20 + 1)}`)
             } catch {
-                return message.channel.send(`Default 1D20 roll: ${Math.floor(Math.random()*20+1)}`)
+                return message.channel.send(`Default 1D20 roll: ${Math.floor(Math.random() * 20 + 1)}`)
             }
         }
-        try{
+        try {
             let temp = 0;
-            try{
-                for(let i = 0; i < args[0]; i++){
-                    temp += Math.random()*args[1]+1+args[2];
+            try {
+                for (let i = 0; i < args[0]; i++) {
+                    temp += Math.floor(Math.random() * args[1] + 1 + args[2]);
                 }
                 interaction.reply(`You rolled a: ${temp}`)
-            } catch{
+            } catch {
                 let tempArgs = args;
                 args = [];
-                for(let i = 0; i< tempArgs.length;i++){
-                    args[i] = tempArgs[i].toLowerCase().replace(" ", "").replace("d", " ").replace("+", " ");
+                tempArgs = tempArgs.join('')
+                tempArgs = tempArgs.replace("d", " ").replace("+", " ").replace("-", " -").split(" ");
+                args = tempArgs
+                if (!args[2]) args[2] = 0;
+                for (let i = 0; i < args.length; i++) {
+                    args[i] = parseInt(args[i])
                 }
-                if(!args[2]) args[2] = 0
-                console.log(args)
-                for(let i = 0; i< args[0]; i++){
-                    temp += Math.floor(Math.random()*args[1]+1+args[2]);
+                for (let i = 0; i < args[0]; i++) {
+                    temp += Math.floor(Math.random() * args[1] + 1);
+                    temp2 = args[2];
                 }
-                message.reply(`You rolled a: ${temp | 0}`)
+                if (args[2] > 0) {
+                    if (temp === 20) return message.reply(`You rolled a natural 20.\n**${temp}** + ${temp2}: ${temp + temp2}`).then(message.delete())
+                    if (temp === 1) return message.reply(`You rolled a natural 1. \n **${temp}** + ${temp2}: ${temp + temp2}`).then(message.delete())
+                    return message.reply(`You rolled ${temp}+${temp2}: ${temp + temp2}`).then(message.delete())
+                }
+                if (args[2] < 0) {
+                    if (temp === 20) return message.reply(`You rolled a natural 20.\n**${temp}** ${temp2}: ${temp + temp2}`).then(message.delete())
+                    if (temp === 1) return message.reply(`You rolled a natural 1. \n **${temp}** ${temp2}: ${temp + temp2}`).then(message.delete());
+                    return message.reply(`You rolled ${temp} ${temp2}: ${temp + temp2}`).then(message.delete())
+                }
+                
             }
-        } catch (e){
-            try{
+        } catch (e) {
+            try {
                 interaction.reply("An error has occured. Please check your inputs and try again");
             } catch {
                 message.reply("An error has occured. Please check your inputs and try again");
