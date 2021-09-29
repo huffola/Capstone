@@ -1,15 +1,28 @@
-const { Client, Collection, Intents } = require('discord.js');
-const Discord = require('discord.js')
+const { Client, Intents, Discord, Collection } = require('discord.js');
 const fs = require('fs');
-let configJson = require('../env/config/config.json')
+const config = require('../env/config/config.json')
 
-const client = new Client({ partials: [ "MESSAGE", "CHANNEL", "REACTION"], intents: [Intents.FLAGS.GUILDS]});
+const client = new Client({
+    partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
+});
+client.commands = new Collection();
 
-client.commands = new Discord.Collection();
-client.events = new Discord.Collection();
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
+const eventFiles = fs.readdirSync('./events').filter(file => file.endsWith('.js'));
 
-['command_handler', 'event_handler'].forEach(handler => {
-    require(`./handlers/${handler}`)(client, Discord);
-})
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    client.commands.set(command.data.name, command);
+}
 
-client.login(configJson.token);
+for (const file of eventFiles) {
+    const event = require(`./events/${file}`);
+    if (event.once) {
+        client.once(event.name, (...args) => event.execute(...args));
+    } else {
+        client.on(event.name, (...args) => event.execute(...args));
+    }
+}
+
+client.login(config.token)

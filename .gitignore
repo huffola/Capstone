@@ -121,6 +121,7 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+source/env/config/config.json
+
 
 # End of https://www.toptal.com/developers/gitignore/api/node
-source/env/config/config.json
