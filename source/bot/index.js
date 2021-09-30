@@ -2,9 +2,10 @@ const { Client, Intents, Discord, Collection } = require('discord.js');
 const fs = require('fs');
 const config = require('../env/config/config.json')
 
+
 const client = new Client({
     partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
-    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES]
+    intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES,Intents.FLAGS.DIRECT_MESSAGES]
 });
 client.commands = new Collection();
 
