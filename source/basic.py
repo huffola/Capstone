@@ -29,13 +29,13 @@ def profile():
     bag = ['Judge','Zone','Truth','Explorer','Evader','Valkryie','Felon','Rive']
     return render_template('profile.html',bag=bag)
 
-@app.route('/my_bag')
-def my_bag():
-    return render_template('my_bag.html')
+@app.route('/collections')
+def collections():
+    return render_template('collections.html')
 
-@app.route('/friends')
-def friends():
-    return render_template('friends.html')
+@app.route('/game_rules')
+def game_rules():
+    return render_template('game_rules.html')
 
 @app.route('/signup', methods=['GET','POST'])
 def signup():
