@@ -30,12 +30,13 @@ module.exports = {
                 tempArgs = tempArgs.toLowerCase();
                 tempArgs = tempArgs.replace("d", " ").replace("+", " ").replace("-", " -").split(" ");
                 args = tempArgs
+                if(args[0] === '') args[0] =1;
                 if (!args[2]) args[2] = 0;
                 for (let i = 0; i < args.length; i++) {
                     args[i] = parseInt(args[i]);
                 }
                 for (let i = 0; i < args[0]; i++) {
-                    temp += Math.floor(Math.random() * args[1] + 1);
+                    temp += Math.floor(Math.random() * args[1]) + 1;
                     temp2 = args[2];
                 }
                 if (args[2] > 0) {
@@ -48,30 +49,31 @@ module.exports = {
                     if (temp === 1) return interaction.reply(`You rolled a natural 1. \n **${temp}** ${temp2}: ${temp + temp2}`);
                     return interaction.reply(`You rolled ${temp} ${temp2}: ${temp + temp2}`);
                 }
-            } catch {
-                let tempArgs = args;
-                args = [];
-                tempArgs = tempArgs.join('')
-                tempArgs = tempArgs.toLowerCase();
-                tempArgs = tempArgs.replace("d", " ").replace("+", " ").replace("-", " -").split(" ");
-                args = tempArgs
-                if (!args[2]) args[2] = 0;
-                for (let i = 0; i < args.length; i++) {
-                    args[i] = parseInt(args[i])
+                if(args[2] === 0){
+                    if (temp === 20) return interaction.reply(`You rolled a natural 20.\n**${temp}**`);
+                    if (temp === 1) return interaction.reply(`You rolled a natural 1. \n **${temp}**`);
+                    return interaction.reply(`You rolled ${temp}`);
                 }
+            } catch {
+                temp = 0;
                 for (let i = 0; i < args[0]; i++) {
-                    temp += Math.floor(Math.random() * args[1] + 1);
+                    temp += Math.floor(Math.random() * args[1]) + 1;
                     temp2 = args[2];
                 }
                 if (args[2] > 0) {
-                    if (temp === 20) return message.reply(`You rolled a natural 20.\n**${temp}** + ${temp2}: ${temp + temp2}`).then(message.delete())
-                    if (temp === 1) return message.reply(`You rolled a natural 1. \n **${temp}** + ${temp2}: ${temp + temp2}`).then(message.delete())
-                    return message.reply(`You rolled ${temp}+${temp2}: ${temp + temp2}`).then(message.delete())
+                    if (temp === 20) return message.reply(`You rolled a natural 20.\n**${temp}** + ${temp2}: ${temp + temp2}`)
+                    if (temp === 1) return message.reply(`You rolled a natural 1. \n **${temp}** + ${temp2}: ${temp + temp2}`)
+                    return message.reply(`You rolled ${temp}+${temp2}: ${temp + temp2}`)
                 }
                 if (args[2] < 0) {
-                    if (temp === 20) return message.reply(`You rolled a natural 20.\n**${temp}** ${temp2}: ${temp + temp2}`).then(message.delete())
-                    if (temp === 1) return message.reply(`You rolled a natural 1. \n **${temp}** ${temp2}: ${temp + temp2}`).then(message.delete());
-                    return message.reply(`You rolled ${temp} ${temp2}: ${temp + temp2}`).then(message.delete())
+                    if (temp === 20) return message.reply(`You rolled a natural 20.\n**${temp}** ${temp2}: ${temp + temp2}`)
+                    if (temp === 1) return message.reply(`You rolled a natural 1. \n **${temp}** ${temp2}: ${temp + temp2}`)
+                    return message.reply(`You rolled ${temp} ${temp2}: ${temp + temp2}`)
+                }
+                if(args[2] === 0){
+                    if (temp === 20) return message.reply(`You rolled a natural 20.\n**${temp}**`)
+                    if (temp === 1) return message.reply(`You rolled a natural 1. \n **${temp}**`)
+                    return message.reply(`You rolled ${temp}`)
                 }
 
             }
