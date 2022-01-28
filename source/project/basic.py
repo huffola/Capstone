@@ -1,37 +1,36 @@
-from flask import Flask, render_template, flash, session , redirect, url_for
+from flask import Flask, render_template, flash, session , redirect, url_for, abort
 from flask import request
+from flask_login import login_user, login_required, logout_user
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, BooleanField, RadioField, DateTimeField, TextField, TextAreaField, SelectField
 from wtforms.validators import DataRequired
 import os
 from flask_sqlalchemy import SQLAlchemy
+#from source import app, db
+#from source.models import User
+#from source.forms import LoginForm, RegistrationForm
+
 
 basedir= os.path.abspath(os.path.dirname(__file__))#setting path for DB
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'mysecretkey'
-app.config['SQLALCHEMY_DATABATE_URI'] = 'sqlite:///'+os.path.join(basedir,'data.sqlite')#DB location
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db =SQLAlchemy(app)
 
-################CREATING TABLES: ############
-#class TestTable(db.Model):
-#    __tablename__ = 'table1' #manual overwrite of table name(if necessary)
+
+
 
 
 
 #///////////////////////////////////////////////////////////////
-
-class RegisterForm(FlaskForm):
-    email = StringField("Email:", validators=[DataRequired()])
-    username = StringField("Username:", validators=[DataRequired()])
-    password = StringField("Password:", validators=[DataRequired()])
-    password_confirm = StringField("Retype Password:", validators=[DataRequired()])
-    phone_num = StringField("Phone Number(optional):")
-    gender =RadioField('Select your desired gender:', choices=[('gender_male', 'Male'), ('gender_fem','Female'), ('gender_oth','Other')])
-    submit = SubmitField('SUBMIT')
-
+#COMMENTED OUT BECAUSE THIS IS ALREADY IN FORMS.PY
+#class RegisterForm(FlaskForm):
+#    email = StringField("Email:", validators=[DataRequired()])
+#    username = StringField("Username:", validators=[DataRequired()])
+#    password = StringField("Password:", validators=[DataRequired()])
+#    password_confirm = StringField("Retype Password:", validators=[DataRequired()])
+#    phone_num = StringField("Phone Number(optional):")
+#    gender =RadioField('Select your desired gender:', choices=[('gender_male', 'Male'), ('gender_fem','Female'), ('gender_oth','Other')])
+#    submit = SubmitField('SUBMIT')
 
 #HOME PG///////////////////////////////////////////////////////////////
 @app.route('/')
