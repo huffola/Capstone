@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <div class="container">
+    <form class="form-group" method="POST">
+      {{form.hidden_tag()}}
+
+      <div class="form-group">
+        {{form.name.label(class="form-control-label")}}
+        {{form.name(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.level.label(class="form-control-label")}}
+        {{form.level(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.class_.label(class="form-control-label")}}
+        {{form.class_(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.saves.label(class="form-control-label")}}
+        {{form.saves(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.race.label(class="form-control-label")}}
+        {{form.race(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.gender.label(class="form-control-label")}}
+        {{form.gender(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.age.label(class="form-control-label")}}
+        {{form.age(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.weight.label(class="form-control-label")}}
+        {{form.weight(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.hair.label(class="form-control-label")}}
+        {{form.hair(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.eyes.label(class="form-control-label")}}
+        {{form.eyes(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.notes.label(class="form-control-label")}}
+        {{form.notes(class="form-control form-control-lg")}}
+      </div>
+
+      <div class="form-group">
+        {{form.submit(class="btn btn-outline-info")}}
+      </div>
+
+    </form>
+  </div>
+
+{% endblock %}
