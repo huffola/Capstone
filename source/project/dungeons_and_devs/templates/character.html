@@ -1,19 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-<div class="jumbotron">
-  <h1>{{name}}</h1>
-  <h2>Level: {{level}}</h2>
-  <h2>Class: {{class_}}</h2>
-  <h2>Saves: {{saves}}</h2>
-  <h2>Race: {{race}}</h2>
-  <h2>Gender: {{gender}}</h2>
-  <h2>Age: {{age}}</h2>
-  <h2>Weight: {{weight}}</h2>
-  <h2>Hair: {{hair}}</h2>
-  <h2>Eyes: {{eyes}}</h2>
-  <h2>Notes: {{notes}}</h2>
+<div class="jumbotron container">
 
+  <ul class="list-group">
+  <li class="list-group-item active" aria-current="true"><h1>{{name}}</h1></li>
+  <li class="list-group-item">Level: {{level}}</li>
+  <li class="list-group-item">Class: {{class_}}</li>
+  <li class="list-group-item">Saves: {{saves}}</li>
+  <li class="list-group-item">Race: {{race}}</li>
+  <li class="list-group-item">Gender: {{gender}}</li>
+  <li class="list-group-item">Age: {{age}}</li>
+  <li class="list-group-item">Weight: {{weight}}</li>
+  <li class="list-group-item">Hair: {{hair}}</li>
+  <li class="list-group-item">Eyes: {{eyes}}</li>
+  <li class="list-group-item">Notes: {{notes}}</li>
+  </ul>
 
 
 </div>

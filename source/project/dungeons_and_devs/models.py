@@ -59,6 +59,8 @@ class Character(db.Model):#establishing TABLE DESIGN
     saves = db.Column(db.Integer,index=True)
     notes = db.Column(db.String(255),index=True)
 
+    #character_image = db.Column(db.String(64),nullable=False,default='default_profile.png')
+
 
     #init method to make an instance of a characters
     def __init__(self,name,race,gender,level,class_,age,weight,hair,eyes,saves,notes,user_id):

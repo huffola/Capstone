@@ -1,7 +1,42 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="jumbotron">
+  <div class="jumbotron font-monospace">
+    <br>
     <h1>About Dungeons & Developers</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <p>Dungeons & Developers is an interactive web based application for D&D enthusiats. The application allows for users to create their characters within our web-portal and attatch attributes and items alike to said characters. Furthermore if you and your campaign mates use the Discord App we also provide a bot that given a set of commands can access the attributes of all your characters. This tool aims to ease the pain or pen and paper edits while trying to enjoy the game you love. </p>
   </div>
+
+  <div class="row row-cols-1 row-cols-md-2 g-4 ">
+  <div class="col"  style="width: 27rem;">
+    <div class="card">
+      <img src="{{ url_for('static', filename='media/signup.png')}}" class="card-img-top" alt="...">
+      <div class="card-body font-monospace bg-dark text-light">
+        <h5 class="card-title">Sign Up</h5>
+        <p class="card-text ">Head over to the 'Register' tab to embark on your 3.5E journey with us at Dungeons & Developers. Your email is not shared with any third party. This site is for users by users. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</p>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="col "  style="width: 27rem;">
+    <div class="card">
+      <img src="{{ url_for('static', filename='media/create.png')}}" class="card-img-top" alt="...">
+      <div class="card-body font-monospace bg-dark text-light">
+        <h5 class="card-title ">Create</h5>
+        <p class="card-text">Create your character by adding a backstory, items, class, and much more through our 'Create Character' tab. Coming soon: a pick list of all Standard 3.5E items, and attributes to add to your already existing character(s).</p>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <div class="col"  style="width: 27rem;">
+    <div class="card">
+      <img src="{{ url_for('static', filename='media/conquer.png')}}" class="card-img-top" alt="...">
+      <div class="card-body font-monospace bg-dark text-light">
+        <h5 class="card-title">Campaign</h5>
+        <p class="card-text">Find Inspiration for new characters by sifting through our database of users characters available to you on the 'Dungeons & Developers' tab above. Here you can also find like minded users and potentially a campaign to join.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+
 {% endblock %}
