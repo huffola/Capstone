@@ -1,26 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="jumbotron">
-    <h1>Dungeons & Developers</h1>
-  </div>
 
+  <br>
   <div class="container">
 {% for charc in characters.items %}
 
-  <div class="card">
 
+  <div class="card font-monospace bg-dark text-light" style="width: 25rem;">
+    <img src="{{ url_for('static', filename='profile_pics/default_character.png')}}" class="card-img-top" alt="...">
     <div class="card-body">
-
-      <h2><a class="card-title" href="  {{ url_for('characters.character', character_id=charc.id)}}">{{charc.name}}</a></h2>
-
-      <a href="{{ url_for('users.user_characters',username=charc.owner.username )}}">Owner: {{charc.owner.username}}</a>
-
-      <a class="btn btn-primary" href="{{url_for('characters.character',character_id=charc.id)}}">View Character</a>
+      <h1 class="card-title font-monospace" href="">{{charc.name}}</h1>
+      <p class="card-text">{{charc.notes}}</p>
+      <span>
+        <a href="{{ url_for('characters.character', character_id=charc.id)}}" class="btn btn-primary">View Character</a>
+        <a href="{{ url_for('users.user_characters',username=charc.owner.username )}}" class="btn btn-primary">View Creator</a>
+      </span>
 
 
     </div>
-
-  </div>
+  </div><br>
 
 {% endfor %}
 
