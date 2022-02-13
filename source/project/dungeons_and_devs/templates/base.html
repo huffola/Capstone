@@ -27,14 +27,15 @@
                 <a class="nav-link" href="{{url_for('core.info')}}">About Us</a>
               </li>
               {% if current_user.is_authenticated %}
-                <li class='nav-item'>
-                  <a class="nav-link" href="{{url_for('users.logout')}}">Log Out</a>
-                </li>
+              
                 <li class="nav-item">
                   <a class="nav-link" href="{{url_for('users.account')}}">Profile</a>
                 </li>
                 <li class='nav-item'>
                   <a class="nav-link" href="{{url_for('characters.create_character')}}">Create Character</a>
+                </li>
+                <li class='nav-item'>
+                  <a class="nav-link" href="{{url_for('users.logout')}}">Log Out</a>
                 </li>
               {% else %}
 
