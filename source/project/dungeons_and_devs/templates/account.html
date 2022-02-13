@@ -3,7 +3,7 @@
   <div class="jumbotron">
     <div align='center'>
       <h1>Welcome to the page for {{current_user.username}}</h1>
-      <img align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
+      <img class="rounded-circle border border-dark border-4" align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
     </div>
   </div>
 
