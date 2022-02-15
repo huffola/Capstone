@@ -86,7 +86,7 @@ def user_characters(username):
 
     user = User.query.filter_by(username=username).first_or_404()
 
-    characters = Character.query.filter_by(owner=user).order_by(Character.name.desc()).paginate(page=page, per_page=5)#lists characters in ascneding order by name
+    characters = Character.query.filter_by(owner=user).order_by(Character.name.asc()).paginate(page=page, per_page=5)#lists characters in ascneding order by name
 
     return render_template('user_characters.html', characters=characters, user=user)
 

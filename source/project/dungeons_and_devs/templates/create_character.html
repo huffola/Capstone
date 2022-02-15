@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
-  <div class="container">
+<br>
+  <div class="container" style="width: 50rem;" align='center'>
     <form class="form-group" method="POST">
+      <div class="card font-monospace ">
+        <div class="card-header">
       {{form.hidden_tag()}}
 
       <div class="form-group">
@@ -63,8 +65,12 @@
       <div class="form-group">
         {{form.submit(class="btn btn-outline-info")}}
       </div>
+      </div>
+      </div>
 
     </form>
   </div>
+
+
 
 {% endblock %}
