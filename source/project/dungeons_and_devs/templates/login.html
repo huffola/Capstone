@@ -1,28 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
+  <br><br>
+
+
   <form method="POST">
-    {{form.hidden_tag()}}
-    {{form.email.label}}{{form.email}}<br>
-    {{form.password.label}}{{form.password}}<br>
-    {{form.submit()}}
+    <div class="card font-monospace shadow-lg p-3 mb-5 bg-body rounded">
+      <div class="card-header">
+        Please Provide the Appropriate Credentials
+      </div>
+      <div class="card-body">
+        {{form.hidden_tag()}}
+        {{form.email.label(class="form-label")}}{{form.email(class="form-control")}}<br>
+        {{form.password.label(class="form-label")}}{{form.password(class="form-control")}}<br>
+        {{form.submit(class="btn btn-primary")}}
+      </div>
+    </div>
   </form>
 
 
-
-  <div class="container" method="POST">
-    <form>
-      {{form.hidden_tag()}}
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address:</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>{{email}}
-        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-      </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password:</label>
-        <input type="password" class="form-control" id="exampleInputPassword1">{{password}}
-      </div>
-      <button type="submit" class="btn btn-primary">Submit</button>{{submit}}
-    </form>
-  </div>
 
 {% endblock %}

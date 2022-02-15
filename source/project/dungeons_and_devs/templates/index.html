@@ -2,11 +2,11 @@
 {% block content %}
 
   <br>
-  <div class="container">
+  <div class="container" align='center'>
 {% for charc in characters.items %}
 
 
-  <div class="card font-monospace bg-dark text-light" style="width: 25rem;">
+  <div class="card font-monospace bg-dark text-light " style="width: 30rem;">
     <img src="{{ url_for('static', filename='profile_pics/default_character.png')}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h1 class="card-title font-monospace" href="">{{charc.name}}</h1>
@@ -22,7 +22,10 @@
 
 {% endfor %}
 
+
   </div>
+
+  
 
 
   <nav aria-label="Page navigation example">
@@ -40,4 +43,7 @@
     {% endfor %}
   </ul>
 </nav>
+
+
+
 {% endblock %}

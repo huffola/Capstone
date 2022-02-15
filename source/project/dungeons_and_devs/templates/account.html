@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="jumbotron">
+<br>
+  <div class="jumbotron font-monospace">
     <div align='center'>
       <h1>Welcome to the page for {{current_user.username}}</h1>
       <img class="rounded-circle border border-dark border-4" align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
     </div>
   </div>
 
-  <div class="container">
+  <div class="container font-monospace">
     <form method="POST" action=" " enctype="multipart/form-data">
 
       {{form.hidden_tag()}}

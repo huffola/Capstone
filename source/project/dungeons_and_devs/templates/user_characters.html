@@ -1,25 +1,34 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="container">
+<br>
+  <div class="container font-monospace" align='center'>
     <div class="jumbotron">
       <div align='center'>
         <h1>Welcome to the page for {{user.username}}</h1>
         <img src="{{url_for('static',filename='profile_pics/'+user.profile_image)}}" alt="">
+        <br><br>
       </div>
     </div>
 
 
+    <div class="card text-white bg-dark mb-3" style="max-width: 30rem;">
+      <div class="card-header">Characters by: {{user.username}}</div>
+      <div class="card-body">
+
+
 {% for chara in characters.items %}
 
-  <h2><a href="{{ url_for('characters.character', character_id=chara.id)}}">{{ chara.name }}</a></h2>
+  <h5 class="card-title"><a href="{{ url_for('characters.character', character_id=chara.id)}}">{{ chara.name }}</a></h5>
 
   <!-- THIS  is where ALL CHARACTER INFO WILL BE DISPLAYED, NEED TO GET FANCY WITH BOOTSTRAP HERE, LOTS OF ADATA PER CHARACTER-->
 {% endfor %}
+      </div>
+    </div>
   </div>
 
 <!-- PAGINATION FOR CHARACTERS-->
   <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
+  <ul class="pagination justify-content-center font-monospace">
     {% for page_num in characters.iter_pages() %}
       {% if characters.page == page_num %}
         <li class='page-item disabled'>

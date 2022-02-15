@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+
+<br><br>
+
+
 <form method="POST">
-    {# This hidden_tag is a CSRF security feature. #}
-    {{ form.hidden_tag() }}
-    {{ form.email.label }} {{ form.email() }}<br>
-    {{ form.username.label }} {{ form.username() }}<br>
-    {{ form.password.label }} {{ form.password() }}<br>
-    {{ form.pass_confirm.label }} {{ form.pass_confirm() }}<br>
-    {{ form.submit() }}
+  <div class="card font-monospace shadow-lg p-3 mb-5 bg-body rounded">
+    <div class="card-header">
+      No information provided will be shared by Dungeons & Developers
+    </div>
+    <div class="card-body">
+      {{form.hidden_tag()}}
+      {{form.email.label(class="form-label")}}{{form.email(class="form-control")}}<br>
+      {{form.username.label(class="form-label")}}{{form.username(class="form-control")}}<br>
+      {{form.password.label(class="form-label")}}{{form.password(class="form-control")}}<br>
+      {{form.pass_confirm.label(class="form-label")}}{{form.pass_confirm(class="form-control")}}<br>
+      {{form.submit(class="btn btn-primary")}}
+    </div>
+  </div>
 </form>
 
 
