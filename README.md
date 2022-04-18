@@ -9,7 +9,7 @@ D&Dev is a web application that creates a helper-tool for D&D players using 3.5E
 [User-Guide](https://github.com/)
 
 # Installation
-[Requirements](https://github.com/)
+[Requirements](https://github.com/huffola/Capstone/blob/main/requirements.txt)
 
   - 1. Clone the repository: [https://github.com/huffola/Capstone.git](https://github.com/huffola/Capstone.git) into desired installation location
   - 2. Navigate to src within the repo via terminal/command line
