@@ -30,14 +30,14 @@ Developers & Dragons - D&D 3.5 Helper Tool
 
   Alongside the web appliation, you can use our discord bot to perform different commands.
 
-  - commands
+  - commands (performed with !command or /command)
     - /ping
       - Responds "pong" to confirm bot is active
     - /roll "!D^" "1D10" , "3D6"
       - ! = how many Die rolled
 
       - ^ = number of sides per Die
-    - /clear!
+    - /clear !
       - ! = number of messages deleted
       - if not specified then delete 100
     - /help
